@@ -53,7 +53,11 @@ function ResidentTable({ residents = [] }) {
 
                 <td>{resident.lastName || "-"}</td>
 
-                <td>{resident.dateOfBirth || "-"}</td>
+                <td>
+                  {resident.dateOfBirth
+                    ? new Date(resident.dateOfBirth).toLocaleDateString("en-GB")
+                    : "-"}
+                </td>
 
                 <td>{resident.gender || "-"}</td>
 
