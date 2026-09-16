@@ -63,27 +63,27 @@ function PortalUserSearch() {
         <div className="search-card">
           <div className="search-toolbar">
             <div className="search-toggle">
-              <button
-                type="button"
-                className={searchType === "user" ? "active" : ""}
-                onClick={() => {
-                  setSearchType("user");
-                  setSearch("");
-                }}
-              >
+              <span className={searchType === "user" ? "active-label" : ""}>
                 User Search
-              </button>
+              </span>
 
               <button
                 type="button"
-                className={searchType === "careHome" ? "active" : ""}
+                className={`toggle-switch ${
+                  searchType === "careHome" ? "care-home" : ""
+                }`}
                 onClick={() => {
-                  setSearchType("careHome");
+                  setSearchType(searchType === "user" ? "careHome" : "user");
                   setSearch("");
                 }}
+                aria-label="Toggle search type"
               >
-                Care Home Search
+                <span className="toggle-circle"></span>
               </button>
+
+              <span className={searchType === "careHome" ? "active-label" : ""}>
+                Care Home Search
+              </span>
             </div>
 
             <SearchBar
@@ -101,7 +101,7 @@ function PortalUserSearch() {
             <CareHomeTable careHomes={filteredCareHomes} />
           )}
 
-          <Pagination />
+          {/* <Pagination /> */}
         </div>
       </main>
     </div>
