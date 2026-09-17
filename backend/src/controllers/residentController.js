@@ -131,9 +131,31 @@ const updateResident = async (req, res) => {
     });
   }
 };
+const getResidentsByCareHome = async (req, res) => {
+  try {
+    const { careHomeId } = req.params;
+
+    const residents = await Resident.find({
+      careHome: careHomeId,
+    })
+      .populate("careHome", "name address region phone status")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      count: residents.length,
+      residents,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to get residents",
+      error: error.message,
+    });
+  }
+};
 module.exports = {
   createResident,
   getResidents,
   getResidentById,
   updateResident,
+  getResidentsByCareHome,
 };
