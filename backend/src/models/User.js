@@ -33,10 +33,16 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
 
+    national: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "National",
+      default: null,
+    },
+
     careHome: {
-      type: String,
-      required: true,
-      trim: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CareHome",
+      default: null,
     },
 
     status: {

@@ -8,7 +8,7 @@ const careHomeRoutes = require("./src/routes/careHomeRoutes");
 const residentRoutes = require("./src/routes/residentRoutes");
 const medicationRoutes = require("./src/routes/medicationRoutes");
 const residentNoteRoutes = require("./src/routes/residentNoteRoutes");
-
+const nationalRoutes = require("./src/routes/nationalRoutes");
 dotenv.config();
 
 const app = express();
@@ -21,6 +21,7 @@ app.use("/api/care-homes", careHomeRoutes);
 app.use("/api/residents", residentRoutes);
 app.use("/api", medicationRoutes);
 app.use("/api", residentNoteRoutes);
+app.use("/api/nationals", nationalRoutes);
 
 connectDB();
 

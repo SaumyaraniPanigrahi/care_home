@@ -2,6 +2,8 @@ const bcrypt = require("bcrypt");
 
 const User = require("../models/User");
 const Role = require("../models/Role");
+const National = require("../models/National");
+const CareHome = require("../models/CareHome");
 
 const getUsers = async (req, res) => {
   try {
@@ -44,7 +46,10 @@ const getUsers = async (req, res) => {
       filter.status = status;
     }
 
-    const users = await User.find(filter).populate("role");
+    const users = await User.find(filter)
+      .populate("role")
+      .populate("national")
+      .populate("careHome");
 
     res.status(200).json({
       users,
@@ -60,7 +65,8 @@ const getUsers = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const { firstName, lastName, email, password, role, careHome } = req.body;
+    const { firstName, lastName, email, password, role, national, careHome } =
+      req.body;
 
     // 1. Check required fields
     if (!firstName || !lastName || !email || !password || !role) {
@@ -213,10 +219,77 @@ const updateUserStatus = async (req, res) => {
     });
   }
 };
+const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { national, careHome } = req.body;
 
+    // Find user
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    // Update National
+    if (national !== undefined) {
+      if (national === null || national === "") {
+        user.national = null;
+      } else {
+        const nationalExists = await National.findById(national);
+
+        if (!nationalExists) {
+          return res.status(400).json({
+            message: "National not found",
+          });
+        }
+
+        user.national = national;
+      }
+    }
+
+    // Update Care Home
+    if (careHome !== undefined) {
+      if (careHome === null || careHome === "") {
+        user.careHome = null;
+      } else {
+        const careHomeExists = await CareHome.findById(careHome);
+
+        if (!careHomeExists) {
+          return res.status(400).json({
+            message: "Care Home not found",
+          });
+        }
+
+        user.careHome = careHome;
+      }
+    }
+
+    await user.save();
+
+    const updatedUser = await User.findById(id)
+      .populate("role")
+      .populate("national")
+      .populate("careHome");
+
+    res.status(200).json({
+      message: "User updated successfully",
+      user: updatedUser,
+    });
+  } catch (error) {
+    console.error("Update user error:", error.message);
+
+    res.status(500).json({
+      message: "Server error",
+    });
+  }
+};
 module.exports = {
   getUsers,
   createUser,
   getUser,
   updateUserStatus,
+  updateUser,
 };
