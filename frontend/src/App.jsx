@@ -4,6 +4,7 @@ import SignIn from "./pages/SignIn";
 import PortalUserSearch from "./pages/PortalUserSearch";
 import CareHomeResidents from "./pages/CareHomeResidents";
 import ResidentPrescription from "./pages/ResidentPrescription";
+import CareHomeListing from "./pages/CareHomeListing";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           path="/residents/:residentId/prescription"
           element={<ResidentPrescription />}
         />
+        <Route path="/national" element={<CareHomeListing />} />
         <Route path="*" element={<Navigate to="/signin" replace />} />
       </Routes>
     </BrowserRouter>

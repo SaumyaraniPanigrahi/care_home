@@ -19,14 +19,14 @@ body {
 ========================= */
 
 .portal-header {
-  height: 105px;
-  background-color: #00152f;
+  height: 70px;
+  background-color: #212056;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 45px;
+  padding: 0 15px;
 
   color: white;
 }
