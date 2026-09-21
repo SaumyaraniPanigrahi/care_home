@@ -1,4 +1,5 @@
 const CareHome = require("../models/CareHome");
+const Unit = require("../models/Unit");
 
 const createCareHome = async (req, res) => {
   try {
@@ -74,14 +75,14 @@ const updateCareHome = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const { name, address, region, phone, status } = req.body;
+    const { name, address, regions, phone, status } = req.body;
 
     const careHome = await CareHome.findByIdAndUpdate(
       id,
       {
         name,
         address,
-        region,
+        regions,
         phone,
         status,
       },
@@ -109,9 +110,57 @@ const updateCareHome = async (req, res) => {
   }
 };
 
+const getUnitsByCareHome = async (req, res) => {
+  try {
+    const { careHomeId } = req.params;
+
+    const units = await Unit.find({
+      careHome: careHomeId,
+    }).populate("careHome", "name");
+
+    res.status(200).json({
+      count: units.length,
+      units,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+const addRegionToCareHome = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { regionId } = req.body;
+
+    const careHome = await CareHome.findByIdAndUpdate(
+      id,
+      {
+        $addToSet: {
+          regions: regionId,
+        },
+      },
+      {
+        new: true,
+      },
+    );
+
+    res.status(200).json({
+      message: "Region added successfully",
+      careHome,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   createCareHome,
   getCareHomes,
   getCareHomeById,
   updateCareHome,
+  getUnitsByCareHome,
+  addRegionToCareHome,
 };

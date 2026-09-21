@@ -26,11 +26,12 @@ const careHomeSchema = new mongoose.Schema(
       trim: true,
     },
 
-    region: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Region",
-      required: true,
-    },
+    region: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Region",
+      },
+    ],
 
     status: {
       type: String,

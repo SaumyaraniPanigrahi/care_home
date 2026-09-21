@@ -9,6 +9,8 @@ const residentRoutes = require("./src/routes/residentRoutes");
 const medicationRoutes = require("./src/routes/medicationRoutes");
 const residentNoteRoutes = require("./src/routes/residentNoteRoutes");
 const nationalRoutes = require("./src/routes/nationalRoutes");
+const regionRoutes = require("./src/routes/regionRoutes");
+const unitRoutes = require("./src/routes/unitRoutes");
 dotenv.config();
 
 const app = express();
@@ -22,6 +24,8 @@ app.use("/api/residents", residentRoutes);
 app.use("/api", medicationRoutes);
 app.use("/api", residentNoteRoutes);
 app.use("/api/nationals", nationalRoutes);
+app.use("/api/regions", regionRoutes);
+app.use("/api/units", unitRoutes);
 
 connectDB();
 
