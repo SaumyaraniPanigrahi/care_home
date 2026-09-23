@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function CareHomeTable({ careHomes = [] }) {
+function CareHomeTableAdmin({ careHomes = [] }) {
   const navigate = useNavigate();
 
   const handleRowClick = (careHome) => {
@@ -76,4 +76,4 @@ function CareHomeTable({ careHomes = [] }) {
   );
 }
 
-export default CareHomeTable;
+export default CareHomeTableAdmin;

@@ -1,0 +1,349 @@
+.care-home-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.care-home-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: #334155;
+}
+
+.care-home-table__top-row {
+  font-size: 16px;
+}
+
+/* ========================================
+   COLUMN WIDTHS
+======================================== */
+
+.care-home-table th:nth-child(1),
+.care-home-table td:nth-child(1) {
+  width: 34%;
+}
+
+.care-home-table th:nth-child(2),
+.care-home-table td:nth-child(2) {
+  width: 15%;
+}
+
+.care-home-table th:nth-child(3),
+.care-home-table td:nth-child(3) {
+  width: 12%;
+}
+
+.care-home-table th:nth-child(4),
+.care-home-table td:nth-child(4),
+.care-home-table th:nth-child(5),
+.care-home-table td:nth-child(5),
+.care-home-table th:nth-child(6),
+.care-home-table td:nth-child(6),
+.care-home-table th:nth-child(7),
+.care-home-table td:nth-child(7) {
+  width: 9.75%;
+}
+
+/* ========================================
+   FIRST HEADER ROW
+======================================== */
+
+.care-home-table__top-row th {
+  height: 65px;
+  padding: 0 10px;
+
+  background: #ffffff;
+  border: none;
+
+  vertical-align: middle;
+}
+
+/* SearchBox cell */
+
+.care-home-table__search-cell {
+  text-align: left;
+  padding-left: 0 !important;
+}
+
+/* Current/Next cycle titles */
+
+.care-home-table__cycle-title {
+  text-align: center !important;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #334155;
+}
+
+/* ========================================
+   SECOND HEADER ROW
+======================================== */
+
+.care-home-table__header-row th {
+  height: 48px;
+
+  padding: 10px 12px;
+
+  background: #ffffff;
+
+  color: #374151;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  text-align: center;
+
+  white-space: nowrap;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* First 3 headers */
+
+.care-home-table__header-row th:nth-child(1),
+.care-home-table__header-row th:nth-child(2) {
+  text-align: left;
+}
+
+.care-home-table__header-row th:nth-child(3) {
+  text-align: center;
+}
+
+/* ========================================
+   SEARCH BOX
+======================================== */
+
+.care-home-table__search-cell .care-search-box {
+  width: 350px;
+  height: 48px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d6deea;
+  border-radius: 4px;
+
+  padding: 0 16px;
+
+  background: #f1f2f5;
+
+  color: #334155;
+
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 15px;
+
+  outline: none;
+}
+
+.care-home-table__search-cell .care-search-box::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+/* ========================================
+   BODY
+======================================== */
+
+.care-home-table tbody tr {
+  height: 48px;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.15s ease;
+}
+
+.care-home-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.care-home-table tbody td {
+  padding: 10px 12px;
+
+  border: none;
+
+  font-size: 15px;
+
+  color: #475569;
+
+  vertical-align: middle;
+}
+
+/* Care home */
+
+.care-home-table tbody td:nth-child(1) {
+  text-align: left;
+}
+
+/* Postcode */
+
+.care-home-table tbody td:nth-child(2) {
+  text-align: left;
+}
+
+/* Residents */
+
+.care-home-table tbody td:nth-child(n + 3) {
+  text-align: center;
+}
+
+.care-home-row {
+  height: 58px;
+}
+
+/* All cells */
+
+.care-home-row td {
+  padding: 8px 12px;
+  border: none;
+  vertical-align: middle;
+}
+
+/* ---------------------------------
+   Care Home Name
+--------------------------------- */
+
+.care-home-row__name {
+  text-align: left;
+
+  color: #475569;
+
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* ---------------------------------
+   Postcode
+--------------------------------- */
+
+.care-home-row__postcode {
+  text-align: left;
+
+  color: #475569;
+
+  font-size: 15px;
+}
+
+/* ---------------------------------
+   Residents
+--------------------------------- */
+
+.care-home-row__residents {
+  text-align: center;
+}
+
+.resident-count {
+  min-width: 52px;
+  height: 34px;
+
+  padding: 0 16px;
+
+  box-sizing: border-box;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e5eaf1;
+  border-radius: 18px;
+
+  background-color: #f8fafc;
+
+  color: #64748b;
+
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* ---------------------------------
+   Status columns
+--------------------------------- */
+
+.care-home-row__status {
+  text-align: center;
+}
+
+/* ---------------------------------
+   Status pill
+--------------------------------- */
+
+.status-count {
+  min-width: 64px;
+  height: 33px;
+
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 20px;
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  gap: 8px;
+}
+
+/* ---------------------------------
+   To Action
+--------------------------------- */
+
+.status-count--action {
+  background-color: #d71945;
+}
+
+/* ---------------------------------
+   To Review
+--------------------------------- */
+
+.status-count--review {
+  background-color: #e88b00;
+}
+
+/* ---------------------------------
+   White icon circle
+--------------------------------- */
+
+.status-count__icon {
+  width: 24px;
+  height: 24px;
+
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background-color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Red icon */
+
+.status-count--action .status-count__icon {
+  color: #d71945;
+}
+
+/* Orange icon */
+
+.status-count--review .status-count__icon {
+  color: #e88b00;
+}
+
+/* ---------------------------------
+   Number
+--------------------------------- */
+
+.status-count__number {
+  min-width: 14px;
+
+  text-align: center;
+
+  color: #ffffff;
+}

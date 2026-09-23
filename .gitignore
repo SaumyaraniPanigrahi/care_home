@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+Care/frontend/node_modules/
+Care/backend/node_modules/
+
 # Build folders
 dist/
 build/

@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import UserTable from "../components/UserTable";
-import CareHomeTable from "../components/CareHomeTable";
+import CareHomeTableAdmin from "../components/CareHomeTableAdmin";
 import Pagination from "../components/Pagination";
 
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUser } from "../redux/features/userSlice";
 import { fetchCareHomes } from "../redux/features/careHomeSlice";
+import SubHeader from "../components/SubHeader/SubHeader";
 
 function PortalUserSearch() {
   const [search, setSearch] = useState("");
@@ -53,7 +54,7 @@ function PortalUserSearch() {
     <div className="portal-page">
       <Header />
 
-      <div className="page-title">Portal User Search</div>
+      <SubHeader title="Portal User Search" />
 
       <main className="main-content">
         <div className="back-button">
@@ -98,7 +99,7 @@ function PortalUserSearch() {
 
           {/* Care Home Search */}
           {searchType === "careHome" && (
-            <CareHomeTable careHomes={filteredCareHomes} />
+            <CareHomeTableAdmin careHomes={filteredCareHomes} />
           )}
 
           {/* <Pagination /> */}
